@@ -14,11 +14,22 @@
 
 import cv2
 import webbrowser
+import datetime
 
 cap = cv2.VideoCapture(0)
 detector = cv2.QRCodeDetector()
 
 while True:
     _, img = cap.read()
-    
+
     data, bbox, _ = detector.detectAndDecode(img)
+    
+    if data:
+        a=data
+        with open("QRCode.txt", mode = 'w') as file:     
+            file.write(f'Scanned QR Code: \n{a} \nDate and Time %s.' % 
+                (datetime.datetime.now()))      
+        print(a)
+        break 
+    
+ 
