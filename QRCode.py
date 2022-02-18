@@ -20,3 +20,5 @@ detector = cv2.QRCodeDetector()
 
 while True:
     _, img = cap.read()
+    
+    data, bbox, _ = detector.detectAndDecode(img)
